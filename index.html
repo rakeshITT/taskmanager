@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> 
+    
+    <title>TASK MANAGER </title>
+</head>
+<body>
+
+    <div class="card-wrapper">
+            <section class="title">
+        <h1> TASK MANAGER</h1>
+        <div class="line-container">
+            <div id="quote-container">
+                <div id="quote-text">Loading quote...</div>
+                <div id="quote-author">Loading author...</div>
+                </div>
+        </div>
+    </section>
+    <section class="content-container">
+        <div class="content-task">
+            <input type="text" id="task" class="input-box" placeholder="write the task">
+            <button id = "search-button" class="btn-search" ><span>search</span></button>
+            <button id = "add-button" class="btn-add" >add</button>
+    </section>
+     <section class="output-container-wrap">
+        <div class="output-container">
+            
+        <div class="filter-buttons">
+            <h2>Filters</h2>
+
+            <input type="radio" name="filter" id="filter-all" value="all" checked>
+            <label for="filter-all" class="filter-button">All</label>
+
+            <input type="radio" name="filter" id="filter-completed" value="completed">
+            <label for="filter-completed" class="filter-button">Completed</label>
+
+            <input type="radio" name="filter" id="filter-pending" value="pending">
+            <label for="filter-pending" class="filter-button">Pending</label>
+        </div>
+        <ul class="task-list"></ul>
+
+     </section>
+
+    </div>
+
+ 
+    <!-- <script src="./task.js" defer ></script> -->
+    <script src="./task.js" defer ></script>
+</body>
+</html>

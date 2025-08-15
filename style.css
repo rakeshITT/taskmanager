@@ -1,0 +1,177 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(orange, lightgreen);
+  font-family: Arial, sans-serif;
+}
+
+/* Card wrapper for everything */
+.card-wrapper {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: min(800px, 90%);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Title section */
+.title h1 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.line-container {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+/* Input and buttons section */
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.input-box {
+  flex: 1;
+  min-width: 200px;
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+.input-box input[type="checkbox"] {
+  order: -1; 
+  margin-right: 10px;
+}
+/* Buttons */
+.btn-search {
+  background: #00e0ff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-add {
+  background: #00c400;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-search:hover {
+  background: #00c4db;
+}
+
+.btn-add:hover {
+  background: #009f00;
+}
+
+.highlight{
+    background-color:  yellow;
+    /* width: fit-content; */
+    font-weight: bolder;
+}
+
+
+
+/* 
+padding: 10px 20px;
+/* Top & Bottom = 10px, Left & Right = 20px 
+inside: padding 
+outside :margin
+*/
+
+/* Filter section */
+.filter-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.filter-buttons h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Task list */
+
+.task-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+}
+.task-buttons {
+  display: flex;
+  gap: 0.3rem; /* spacing between edit/delete */
+}
+
+/* Task text */
+.task-text {
+  flex: 1;
+  font-size: 1rem;
+}
+
+/* Edit and delete buttons */
+.edit-btn {
+  background: gold;
+  border: none;
+  border-radius: 10px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.delete-btn {
+  flex-shrink: 0;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.edit-btn:hover {
+  background: rgb(219, 185, 0);
+}
+
+.delete-btn:hover {
+  background: darkred;
+}
+
+
