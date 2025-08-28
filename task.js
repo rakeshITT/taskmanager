@@ -10,7 +10,7 @@ console.log(document.body.innerHTML.includes('id="task"'));
 /*ADD TASK */
 
 const addButton = document.getElementById("add-button");
-const outputContainer = document.querySelector(".output-container");
+
 
 addButton.addEventListener("click", addTask);
 addButton.addEventListener("keypress", function(e) {
@@ -27,7 +27,7 @@ const taskInput = document.getElementById("task");
     const taskText = taskInput.value.trim();            // text of task
         
      const taskId = Date.now();
-     const task = { id: taskId, text: taskText, completed: false };
+     const tasks = { id: taskId, task: taskText, completed: false };
         if(taskText === "") {
             alert("Enter the task");
             return;
@@ -79,13 +79,14 @@ function createDomElement(taskId, taskText, completed=false){
 
 
 // save the added task 
-function saveTasks(id, task){
+function saveTasks(id, taskText){
 
     let tasks  =  JSON.parse(localStorage.getItem("tasks")) || {};
     console.log(tasks);                                                      //
     
-    tasks[id]= { id, task, completed: false };
+    tasks[id]= { id, taskText, completed: false };
     localStorage.setItem("tasks", JSON.stringify(tasks));
+    console.log(tasks);  
 
 }
 
@@ -100,32 +101,40 @@ taskList.innerHTML = "";
 
 const tasks  = JSON.parse(localStorage.getItem("tasks")) || {};
 for (let [id, taskObj] of Object.entries(tasks)) {
-createDomElement(Number(id), taskObj.task, taskObj.completed);
+createDomElement(Number(id), taskObj.taskText, taskObj.completed);
+console.log(tasks);
+
 }
 }
 
 
-function deleteTask(li, taskId){
+function deleteTask(li, id){
         li.remove();
 
         let tasks = JSON.parse(localStorage.getItem("tasks")) || {};
-        delete tasks[taskId];
-        localStorage.setItem("tasks", JSON.stringify(task));
+        console.log(tasks);
+        
+        delete tasks[id];
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        console.log(tasks);
 
     }
 
 function editTask(span, taskId){
         
         const newTask = prompt("Edit the task:", span.textContent);
-
+        console.log(newTask);
+        
         if(newTask && newTask.trim() !==""){                                                    /** since prompt is browser method user clicks cacnel it return null hecne */
             span.textContent = newTask.trim();
         }
 
         let tasks = JSON.parse(localStorage.getItem("tasks")) || {};
-        tasks[taskId].text = newTask.trim();
+        console.log(tasks);
+        tasks[taskId].taskText = newTask.trim();
         localStorage.setItem("tasks", JSON.stringify(tasks));
-        
+        console.log(tasks);
+                
     }
 
 /** search button */
@@ -179,7 +188,7 @@ document.getElementById("filter-pending").addEventListener("change", () => filte
 function filterTasks(type) {
   let tasks = JSON.parse(localStorage.getItem("tasks")) || {};
 
-  // Convert to array for filtering
+  //  array conver to filter
   let filteredTasks = Object.values(tasks);
 
   if (type === "completed") {
@@ -188,11 +197,11 @@ function filterTasks(type) {
     filteredTasks = filteredTasks.filter(task => !task.completed);
   }
 
-  // Clear the current list
+  // dele current list
   document.querySelector(".task-list").innerHTML = "";
 
-  // Re-render based on filtered list
-  filteredTasks.forEach(task => createDomElement(task.id, task.task, task.completed));
+  // Re-render based on filter
+  filteredTasks.forEach(task => createDomElement(task.id, task.taskText, task.completed));
 }
 
 
@@ -203,13 +212,13 @@ async function motoQuote() {
     console.log(container);
     
     try {
-        const response = await fetch('https://dummyjson.com/quotes/random');
+        const response =  await fetch('https://dummyjson.com/quotes/random');
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        const quote = await response.json();
+        const quote =  await response.json();
         
         document.getElementById("quote-text").textContent = `"${quote.quote}"`;
         document.getElementById("quote-author").textContent = `— ${quote.author}`;
@@ -217,11 +226,12 @@ async function motoQuote() {
     } catch (error) {
         console.error('Error fetching quote:', error);
         
-        container.innerHTML = `
-            <div class="quote-text">"The way to get started is to quit talking and begin doing."</div>
-            <div class="quote-author">— Walt Disney</div>
-        `;
+       
     }
 }
+
+
+
+
 
 
